@@ -1,25 +1,28 @@
 #include <iostream>
 using namespace std;
 /*  Structures/Constants */
-struct house
-{
+class HouseInfo{
+private:
     int streetNum;
     char streetName[30];
     double price;
+public:
+    HouseInfo():streetNum(0), streetName(""), price(0.0){}   //Empty Constructor
+    HouseInfo(int sNum, char sName[30], double p): streetNum(sNum), streetName(sName), price(p){}
 };
 
 // Function prototypes
-struct house InputHouse(void);
-void PrintHouse(int houseNum, struct house h);
-int ComparePrices(struct house h1, struct house h2);
+class HouseInfo InputHouse(void);
+void PrintHouse(int houseNum, class HouseInfo h);
+int ComparePrices(class HouseInfo h1, class HouseInfo h2);
 
 /* Main Program */
 int main(int argc, char* argv[])
 {
     cout<<"Enter info for first house\n";
-    struct house firstHouse = InputHouse();
+    class HouseInfo firstHouse = InputHouse();
     cout<<"\nEnter info for second house\n";
-    struct house secondHouse = InputHouse();
+    class HouseInfo secondHouse = InputHouse();
 
     PrintHouse(1, firstHouse);
     printf("\n\n");
@@ -38,8 +41,8 @@ int main(int argc, char* argv[])
 }
 
 /* Function Defenitions */
-struct house InputHouse(void){
-    house newHouse;
+class HouseInfo InputHouse(void){
+    HouseInfo newHouse;
     cout << "Please enter the house number:" << endl;
     cin >> newHouse.streetNum;
     cout << "Please enter the street name:" << endl;
@@ -50,11 +53,11 @@ struct house InputHouse(void){
     return newHouse;
 }
 
-void PrintHouse(int houseNum, struct house h){
+void PrintHouse(int houseNum, class HouseInfo h){
     cout << houseNum << " house at: " << h.streetNum << " " << h.streetName << " for $[" << h.price << "]";
 }
 
-int ComparePrices(struct house h1, struct house h2){
+int ComparePrices(class HouseInfo h1, class HouseInfo h2){
     int comparison;
     if(h1.price < h2.price){
         comparison = 1;
